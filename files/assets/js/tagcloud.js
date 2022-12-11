@@ -45,5 +45,10 @@ async function buildTagCloud(multiplier){
             li.appendChild(a);
             wrapper.appendChild(li);
         }
+        
+        // Add a title
+        h3 = document.createElement('h3');
+        h3.innerText = "Tag Cloud";
+        wrapper.parentNode.insertBefore(h3, wrapper);
     });
 }
