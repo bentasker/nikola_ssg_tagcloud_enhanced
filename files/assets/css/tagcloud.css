@@ -1,0 +1,18 @@
+li.tagCloudEle a {
+  display: block;
+  text-decoration: none;
+  color: #9d9999;
+  padding: 3px 10px;
+}
+
+li.tagCloudEle {
+  display: block;
+  float: left;
+  list-style: none;
+  margin-right: 5px;
+}
+
+#tag-cloud-wrap {
+  max-width: 80%;
+  clear: both;
+}
