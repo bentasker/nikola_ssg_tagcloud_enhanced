@@ -1,8 +1,6 @@
-async function buildTagCloud(multiplier, min){
+async function buildTagCloud(multiplier){
     var response = await fetch('/assets/js/tag_cloud_data_enhanced.json');
     
-    // These will be moved to plugin config shortly
-    var excludes = ["Republished", "Documentation", "Howto", "Freedom4All", "Release Notes", "Video"]
     response.json()
     .then(tags => {
         var k, v, weight, perc, style, li, a;
@@ -18,10 +16,6 @@ async function buildTagCloud(multiplier, min){
         for ([k, v] of Object.entries(tags)){
             weight = v[0];
             
-            if (weight < min){
-                continue;
-            }
-            
             if (!hBound || weight > hBound){
                 hBound = weight;
             }
@@ -34,14 +28,6 @@ async function buildTagCloud(multiplier, min){
         // Insert the tags, applying weighting
         for ([k, v] of Object.entries(tags)){
             weight = v[0];
-
-            if (weight < min){
-                continue;
-            }
-            
-            if (excludes.includes(k)){
-                continue;
-            }
             
             // Calculate the size to use as a percentage
             perc = Math.abs((weight - lBound) / (lBound - hBound));
