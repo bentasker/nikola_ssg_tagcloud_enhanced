@@ -36,17 +36,20 @@ from nikola import utils
 class RenderTagCloudEnhanced(Task):
     """Render a tag cloud data file."""
 
-    name = "render_tag_cloud"
+    name = "render_tag_cloud_enhanced"
 
     def gen_tasks(self):
         """Render the tag cloud."""
         self.site.scan_posts()
         yield self.group_task()
 
+        excludes = self.site.config["TAGCLOUD_ENHANCED_EXCLUDES"]
+        min_arts = self.site.config['TAGCLOUD_ENHANCED_MIN_ARTICLES']
+
         # Tag cloud json file
         tag_cloud_data = {}
         for tag, posts in self.site.posts_per_tag.items():
-            if tag in self.site.config['HIDDEN_TAGS']:
+            if tag in self.site.config['HIDDEN_TAGS'] or tag.lower() in excludes:
                 continue
 #            tag_posts = dict(posts=[{'title': post.meta[post.default_lang]['title'],
 #                                     'date': post.date.strftime('%m/%d/%Y'),
@@ -54,6 +57,10 @@ class RenderTagCloudEnhanced(Task):
 #                                     'url': post.permalink(post.default_lang)}
 #                                    for post in reversed(sorted(self.site.timeline, key=lambda post: post.date))
 #                                    if tag in post.alltags])
+
+            if len(posts) < min_arts:
+                continue
+            
             tag_cloud_data[tag] = [len(posts), self.site.link(
                 'tag', tag, self.site.config['DEFAULT_LANG'])]
         output_name = os.path.join(self.site.config['OUTPUT_FOLDER'],
