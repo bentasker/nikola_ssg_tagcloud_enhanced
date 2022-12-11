@@ -33,7 +33,7 @@ from nikola.plugin_categories import Task
 from nikola import utils
 
 
-class RenderTagCloud(Task):
+class RenderTagCloudEnhanced(Task):
     """Render a tag cloud data file."""
 
     name = "render_tag_cloud"

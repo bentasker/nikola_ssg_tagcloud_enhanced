@@ -1,0 +1,12 @@
+[Core]
+name = render_tag_cloud_enhanced
+module = tagcloud_enhanced
+
+[Documentation]
+author = Ben Tasker
+version = 0.1
+website = 
+description = Render a tag cloud data file.
+
+[Nikola]
+PluginCategory = Task
