@@ -51,12 +51,6 @@ class RenderTagCloudEnhanced(Task):
         for tag, posts in self.site.posts_per_tag.items():
             if tag in self.site.config['HIDDEN_TAGS'] or tag.lower() in excludes:
                 continue
-#            tag_posts = dict(posts=[{'title': post.meta[post.default_lang]['title'],
-#                                     'date': post.date.strftime('%m/%d/%Y'),
-#                                     'isodate': post.date.isoformat(),
-#                                     'url': post.permalink(post.default_lang)}
-#                                    for post in reversed(sorted(self.site.timeline, key=lambda post: post.date))
-#                                    if tag in post.alltags])
 
             if len(posts) < min_arts:
                 continue
