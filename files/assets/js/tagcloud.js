@@ -1,5 +1,5 @@
 async function buildTagCloud(multiplier, min){
-    var response = await fetch('/assets/js/tag_cloud_data.json');
+    var response = await fetch('/assets/js/tag_cloud_data_enhanced.json');
     
     // These will be moved to plugin config shortly
     var excludes = ["Republished", "Documentation", "Howto", "Freedom4All", "Release Notes", "Video"]

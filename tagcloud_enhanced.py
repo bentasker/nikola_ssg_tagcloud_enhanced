@@ -64,7 +64,7 @@ class RenderTagCloudEnhanced(Task):
             tag_cloud_data[tag] = [len(posts), self.site.link(
                 'tag', tag, self.site.config['DEFAULT_LANG'])]
         output_name = os.path.join(self.site.config['OUTPUT_FOLDER'],
-                                   'assets', 'js', 'tag_cloud_data.json')
+                                   'assets', 'js', 'tag_cloud_data_enhanced.json')
 
         def write_tag_data(data):
             """Write tag data into JSON file, for use in tag clouds."""
